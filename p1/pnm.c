@@ -100,13 +100,13 @@ int verifArgu(char type[], char filename[], int argc, char *argv[]){
      d++;
    if(filename[d+1] != 'p' || filename[d+2] != 'n'|| filename[d+2] != 'b' || filename[d+3] != 'm' ){
       printf("L'extension du fichier n'est pas bonne\n");
-
+      return -2;
    }//fin while d
 
    if(type[1] == filename[d+2]){
    }else{
       printf("Le format encodé et l'extension du fichier ne correspondent pas\n");
-
+      return -1;
    }//fin else
 
    return 0;
