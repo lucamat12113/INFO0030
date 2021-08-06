@@ -36,7 +36,7 @@ struct PNM_t {
 //On verifie les arguments entres par l utilisateur
 int verifArgu(char type[], char filename[], int argc, char *argv[]){
    int val;
-   char *optstring= "fio";
+   char *optstring= "f:i:o:";
 
    while((val=getopt(argc, argv, optstring)) != EOF){
       
