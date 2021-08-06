@@ -23,8 +23,10 @@
 typedef struct PNM_t PNM;
 
 
+int gestionEnTete(int *colonnes, int *lignes, int *puissance, int *typeChiffre, char *typeLettre, char filename[], FILE **fp);
 
 int verifArgu(char type[], char filename[], int argc, char *argv[]);
+
 PNM *allocDynamique(int colonens, int lignes, int puissannce, int typeChiffre);
 /**
  * load_pnm

@@ -276,10 +276,10 @@ int libererEspace(PNM *image){
      free(image->matrice);
      free(image);
 
-     return 0;
+     
    }//fin else
 
-
+   return 0;
 
 
 }//fin libererEspace
