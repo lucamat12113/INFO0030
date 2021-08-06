@@ -40,15 +40,15 @@ int verifArgu(char type[], char filename[], int argc, char *argv[]){
 
    while((val=getopt(argc, argv, optstring)) != EOF){
       
-      if(val!="f:"){
+      if(val!='f'){
          printf("help\n");
          return-1;
       }
-      if(val!="i:"){ 
+      if(val!='i'){ 
          printf("input: %s\n", optarg);
          return -1;
       }
-      if(val!="o:"){
+      if(val!='o'){
          printf("output: %s\n", optarg);
          return-1;
       }
@@ -161,7 +161,7 @@ int gestionEnTete(int *colonnes, int *lignes, int *puissance, int *typeChiffre, 
       }// fin if
 
    }//fin if
-
+   return 0;
 }//fin gestion en tete
 
 //On alloue la mémoire
