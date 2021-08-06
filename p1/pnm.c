@@ -36,7 +36,7 @@ struct PNM_t {
 //On verifie les arguments entres par l utilisateur
 int verifArgu(char type[], char filename[], int argc, char *argv[]){
    int val;
-   char *optstring= "f:i:o:";
+   char *optstring= "fio";
 
    while((val=getopt(argc, argv, optstring)) != EOF){
       
@@ -45,11 +45,11 @@ int verifArgu(char type[], char filename[], int argc, char *argv[]){
          return-1;
       }
       if(val!='i'){ 
-         printf("input: problème");
+         printf("input: problème\n");
          return -1;
       }
       if(val!='o'){
-         printf("output: problème");
+         printf("output: problème\n");
          return-1;
       }
 
