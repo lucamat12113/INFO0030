@@ -45,11 +45,11 @@ int verifArgu(char type[], char filename[], int argc, char *argv[]){
          return-1;
       }
       if(val!='i'){ 
-         printf("input: %s\n", optarg+1);
+         printf("input: problème");
          return -1;
       }
       if(val!='o'){
-         printf("output: %s\n", optarg);
+         printf("output: problème");
          return-1;
       }
 
