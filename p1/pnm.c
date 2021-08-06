@@ -39,17 +39,19 @@ int verifArgu(char type[], char filename[], int argc, char *argv[]){
    char *optstring= "f:i:o:";
 
    while((val=getopt(argc, argv, optstring)) != EOF){
-      switch(val){
-         case 'f':
-            printf("help\n"); break;
-         case 'i':
-            printf("input: %s\n", optarg); break;
-         case 'o':
-            printf("output: %s\n", optarg); break;
-
+      
+      if(val!="f:"){
+         printf("help\n");
+         return-1;
+      }
+      if(val!="i:"){ 
+         printf("input: %s\n", optarg);
          return -1;
-
-     }// fin if
+      }
+      if(val!="o:"){
+         printf("output: %s\n", optarg);
+         return-1;
+      }
 
    }// fin while
 
