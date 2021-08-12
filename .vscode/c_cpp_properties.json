@@ -20,7 +20,6 @@
                 "/usr/include/gdk-pixbuf-2.0",
                 "/usr/include/gtk-2.0/**",
                 "/usr/include/gtk-2.0/gdk/**"
-                
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
