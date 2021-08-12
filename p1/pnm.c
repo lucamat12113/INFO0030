@@ -37,10 +37,13 @@ struct PNM_t {
 int verifArgu(char type[], char filename[], int argc, char *argv[]){
    int val;
    char *optstring= "f:i:o:";
+   char * a;
+   char * o;
+   char * g;
 
    while((val=getopt(argc, argv, optstring)) != EOF){
       
-      if(val!='f'){
+      if(val=='f'){
          printf("help\n");
          return-1;
       }
