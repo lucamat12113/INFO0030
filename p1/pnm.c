@@ -4,7 +4,7 @@
  * Ce fichier contient les définitions de types et 
  * les fonctions de manipulation d'images PNM.
  * 
- * @author: Nom Prenom Matricule
+ * @author: Matagne Luca S190632
  * @date: 
  * @projet: INFO0030 Projet 1
  */
