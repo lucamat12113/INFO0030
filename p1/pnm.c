@@ -97,7 +97,7 @@ PNM *allocation_struct(int largeur, int longueur, int max, int numero){
 
 }// fin allocation
 
-
+////////////////////////////////////////////////////////////    ED 6    ///////////////////////////////////////////////////////////////
 int load_pnm(PNM **image, char* filename) {
 
    /* Insérez le code ici */
