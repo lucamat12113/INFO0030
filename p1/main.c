@@ -4,7 +4,7 @@
  * Ce fichier contient la fonction main() du programme de manipulation
  * de fichiers pnm.
  *
- * @author: Matagne Luca S190632
+ * @author: Nom Prenom Matricule
  * @date: 
  * @projet: INFO0030 Projet 1
  */
@@ -27,3 +27,4 @@ int main(int argc, char *argv[]) {
 
    return 0;
 }
+

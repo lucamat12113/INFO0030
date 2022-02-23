@@ -32,3 +32,4 @@ pnm.o: pnm.c
 
 clean:
 	rm -f *.o $(EXEC) *~
+
