@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <unistd.h>
 
 #include "pnm.h"
 
@@ -26,6 +27,36 @@ struct PNM_t {
 
 };
 
+
+
+//verification des arguments
+int VerifArgu(int argc, char **argv){
+
+const char *optstring = ":hi:o::";
+int val;
+
+while((val=getopt(argc, argv, optstring))!=EOF){
+	switch(val){
+		case 'h':
+			printf("help\n");
+			break;
+		case 'i':
+			printf("input %s\n", optarg);
+			break;
+		case 'o':
+			printf("output %s\n", optarg);
+			break;
+		case ':':
+			printf("Missing arguments for %c\n", optopt);
+			break;
+		case '?':
+			printf("Unknown option: %c!\n", optopt);
+			break;
+	}//fin switch
+}//fin while
+
+return 0;
+}//fin verif argu
 
 int load_pnm(PNM **image, char* filename) {
 
