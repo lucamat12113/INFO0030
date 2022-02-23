@@ -1,3 +1,18 @@
+/**
+ * pnm.h
+ * 
+ * Ce fichier contient les déclarations de types et les prototypes
+ * des fonctions pour la manipulation d'images PNM.
+ * 
+ * @author: Nom Prenom Matricule
+ * @date: 
+ * @projet: INFO0030 Projet 1
+ */
+
+/*
+ * Include guard (pour éviter les problèmes d'inclusions multiplies
+ * Bonne pratique: toujours encadrer un header avec un include guard
+ */
 #ifndef __PNM__
 #define __PNM__
 
