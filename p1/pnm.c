@@ -97,11 +97,45 @@ PNM *allocation_struct(int largeur, int longueur, int max, int numero){
 
 }// fin allocation
 
-////////////////////////////////////////////////////////////    ED 6    ///////////////////////////////////////////////////////////////
+
 int load_pnm(PNM **image, char* filename) {
 
-   /* Insérez le code ici */
+    char lettre;;
+    int numero;
+    int largeur;
+    int longueur;
+    int max = 0;
+    FILE* fp;
+    char tmp[100];
+    int tmp2;
 
+    //lecture des dimensions
+
+    int i= lecturedimensions(&lettre, &numero, &largeur, &longueur, &max, filename, &fp);
+    if(i == -1)
+        return -1;
+
+    *image= allocation_struct(largeur, longueur, max, numero);
+
+    for(int i = 0; i < longueur; i++){
+        for(int j = 0; j<largeur; j++){
+            fscanf(fp, "%s", tmp);
+
+            if(tmp[0] == '#'){
+                fgets(tmp, 100, fp);
+                fscanf(fp, "%s", tmp);
+                tmp2= atoi(tmp);
+                (*image)->tab[j][i] = tmp2;
+            }
+            else{
+                tmp2= atoi(tmp);
+                (*image)->tab[j][i] = tmp2;
+
+            }
+        }
+    }
+
+    fclose(fp);
    return 0;
 }
 
