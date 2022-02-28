@@ -136,12 +136,31 @@ int load_pnm(PNM **image, char* filename) {
     }
 
     fclose(fp);
-   return 0;
+    return 0;
 }
 
 int write_pnm(PNM *image, char* filename) {
+    FILE *fp= fopen(filename,"w");
+    if(fp == NULL)
+        return -1;
 
-   /* Insérez le code ici */
 
-   return 0;
+    fprintf(fp, "%d\n", image->type);
+    fprintf(fp, "%d %d\n", image->largeur, image->longueur);
+
+    if(image->type != 1)
+        fprintf(fp, "%d\n", image->max);
+    
+    if(image->type == 3){
+        for(int i=0; i<(image->longueur);i++){
+            for(int j; j<(image->largeur);j++){
+                fprintf(fp, "%d ", image->tab[j][i]);
+            }
+            fprintf(fp, "\n");
+        }
+    }
+    fclose(fp);
+    return 0;
 }
+
+
