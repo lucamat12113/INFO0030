@@ -7,6 +7,10 @@
  */
 typedef struct PNM_t PNM;
 
+int lecturedimensions(char *lettre, int *numero,int *largeur, int *longueur, int *max, char *nomfichier, FILE **fp);
+
+PNM *allocation_struct(int largeur, int longueur, int max, int numero);
+
 
 /**
  * load_pnm
@@ -47,6 +51,10 @@ int load_pnm(PNM **image, char* filename);
  *
  */
 int write_pnm(PNM *image, char* filename);
+
+int freestruct(PNM *image);
+
+int test_caract(char *filename);
 
 #endif // __PNM__
 

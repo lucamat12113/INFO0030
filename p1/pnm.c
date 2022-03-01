@@ -163,4 +163,40 @@ int write_pnm(PNM *image, char* filename) {
     return 0;
 }
 
+int freestruct(PNM *image){
+    if (image == NULL)
+        return -1;
+
+    if(image->type==3){
+        for(int i = 0; i<((image->largeur)*3); i++){
+            if(image->tab[i] == NULL)
+                return -1;
+            free(image->tab[i]);
+        }
+        free(image->tab);
+        free(image);
+    }else{
+        for(int i=0; i<image->largeur; i++){
+           if(image->tab[i] == NULL)
+                return -1;
+            free(image->tab[i]);
+        }
+        free(image->tab);
+        free(image); 
+    }
+    return 0;
+}
+
+int test_caract(char *filename){
+    char *caract_interdits = "/\\ \":*?<>|";
+    for(int i=0; filename[i] |= '\0'; i++){
+        for(int j=0; filename[j] |= '\0';j++){
+            if(filename[i] == caract_interdits[j]){
+                return -1;
+            }
+        }
+    }
+    return 0;
+}
+
 
