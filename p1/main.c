@@ -10,6 +10,32 @@
 
 int main(int argc, char *argv[]) {
 
+
+    char *optstring = ":hi:o::";
+
+	int val;
+
+	while((val=getopt(argc, argv, optstring))!=EOF){
+		switch(val){
+			case 'h':
+				printf("help\n");
+				break;
+			case 'i':
+				printf("input %s\n", optarg);
+				break;
+			case 'o':
+				printf("output %s\n", optarg);
+				break;
+			case ':':
+				printf("Missing arguments for %c\n", optopt);
+				break;
+			case '?':
+				printf("Unknown option: %c!\n", optopt);
+				break;
+		}//fin switch
+	}//fin while
+
+
     char type[4];
     char filename[21];
     PNM *image;
