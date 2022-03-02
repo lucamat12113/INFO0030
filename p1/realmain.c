@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
     char *optstring = ":hi:o::";
 
-   int val;
+	int val;
 
 	while((val=getopt(argc, argv, optstring))!=EOF){
 		switch(val){
@@ -45,6 +45,6 @@ int main(int argc, char *argv[]) {
 		}//fin switch
 	}//fin while
 
-   return 0;
+	return 0;
 }
 
