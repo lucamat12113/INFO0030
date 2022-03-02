@@ -31,6 +31,7 @@ PNM *allocation_struct(int largeur, int longueur, int max, int numero);
  *    -3 Contenu du fichier malformé
  *
  */
+
 int load_pnm(PNM **image, char* filename);
 
 /**
