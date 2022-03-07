@@ -45,19 +45,19 @@ int verif_arguments(char *format, char *nom_fichier, char *nom_sortie, int argc,
    		switch(val){
    			case 'f':
                if(optarg!= NULL){
-                  *format = optarg;
+                  format = optarg;
    				   printf("Le format est %s\n",optarg);
                }
    				break;
    			case 'i':
                if(optarg!= NULL){
-                  *nom_fichier = optarg;
+                  nom_fichier = optarg;
    				   printf("input %s\n", optarg);
                }
    				break;
    			case 'o':
                if(optarg!= NULL){
-                  *nom_sortie = optarg;
+                  nom_sortie = optarg;
    				   printf("output %s\n", optarg);
                }
    				break;
@@ -81,6 +81,8 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
    char *tmp;
    FILE *fp;
 
+   printf("%s\n", nom_fichier);
+
    fp= fopen(nom_fichier, "r");
       if(fp== NULL)
          return -1;
@@ -90,14 +92,16 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
    *lettre_magique =tmp[0];
    *numero_magique = atoi(&tmp[1]);
 
+   printf("pute\n");
+
 //dimensions
    fscanf(fp, "%d %d", hor, ver);
 
    if(numero_magique == 3)
       (*hor) *= 3;
 
-   
-   
+   printf("pute\n");   
+
 //valeur maximum
    fscanf(fp, "%d", max);
 
