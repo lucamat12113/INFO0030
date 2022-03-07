@@ -46,7 +46,7 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    		switch(val){
    			case 'f':
                if(optarg!= NULL){
-                  *nom_fichier = optarg;
+                  *format = optarg;
    				   printf("Le format est %s\n",optarg);
                }
    				break;
@@ -58,7 +58,7 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    				break;
    			case 'o':
                if(optarg!= NULL){
-                  *nom_fichier = optarg;
+                  *nom_sortie = optarg;
    				   printf("output %s\n", optarg);
                }
    				break;
