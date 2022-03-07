@@ -133,8 +133,9 @@ PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
    }else{   
       image->hor= hor;
    }
+   image->max= max;//max verstappen est champion du monde mai love ferrari
    image->ver= ver;
-   image->max= max;
+   
 
 
 }//fin allocation de la memoire
@@ -177,8 +178,36 @@ int load_pnm(PNM **image, char* filename) {
 
 int write_pnm(PNM *image, char* filename) {
 
-   /* Insérez le code ici */
 
+   int f;
+   int g;
+   FILE *fp =fopen(filename, "w");
+   if(fp== NULL)
+      return -1;
+
+   fprintf(fp, "P%d\n%d %d\n", image->type, image->hor, image->ver);
+   if(image->type>1)
+      fprintf(fp, "%d\n", image->max);
+
+   if(image->type<2){
+      for(g=0; g<image->ver; g++){
+         for(f=0; f<image->hor; f++){
+            fprintf(fp, "%d", image->tab[f][g]);
+         }//fin for(f)
+         fprintf(fp,"\n");
+      }//fin for(g)
+   }else{
+      for(g=0; g<image->ver; g++){
+         for(f=0; f<((image->hor)*3); f++){
+            fprintf(fp, "%d", image->tab[f][g]);
+         }//fin for(f)
+         fprintf(fp,"\n");
+      }//fin for(g)
+
+   }
+
+
+   fclose(fp);
    return 0;
 }
 
