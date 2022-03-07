@@ -121,6 +121,14 @@ int load_pnm(PNM **image, char* filename) {
    
    gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver);
 
+   //allocation mémoire
+   int m;
+   PNM *image= malloc(sizeof(PNM));
+   image->tab= malloc(hor*sizeof(int));
+   for(m=0; m<hor; m++){
+      image->tab[m]=malloc(ver*sizeof(int));
+   }
+
 
    return 0;
 }
