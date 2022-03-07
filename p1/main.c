@@ -21,8 +21,8 @@
 
 int main(int argc, char **argv) {
 
-	char format[3];
-	char nom_fichier[25];
+	char *format;
+	char *nom_fichier;
 
 
 	int a= verif_arguments(format, nom_fichier, argc, argv);

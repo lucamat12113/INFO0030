@@ -71,31 +71,38 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    		}//fin switch
    	}//fin while
 
-   // verification dela correspondance des formats
-   strcpy(format, argv[2]);
-   strcpy(nom_fichier, argv[3]);
-   strcpy(nom_sortie, argv[4]);
-
-   for(i=0; nom_fichier[i]!='.'; i++){}//fin for(i)
-
-   for(j=0; nom_sortie[j]!='.'; i++){}// fin for(j)
-
-   if(format[i] != nom_fichier[i+2]){
-      printf("le format encodé et l'extension du fichier d'entrée ne correspondent pas \n");
-      return -1;
-   }// fin if
-
-   if(format[i] != nom_sortie[j+2]){
-      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
-      return -1;
-   }// fin if
-
-   if(nom_fichier[i+2] != nom_sortie[j+2]){
-      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
-      return -1;
 
 return 0;
 }// fin verification des arguments
+
+
+
+int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
+
+   char *tmp;
+
+   FILE **fp= fopen(nom_fichier, "r");
+      if((*fp)== NULL)
+         return -1;
+
+//nombre magique
+   fscanf((*fp), "%s", tmp);
+   *lettre_magique =tmp[0];
+   *numero_magique = atoi(&tmp[1]);
+
+//dimensions
+   fscanf((*fp), "%d %d", hor, ver);
+
+   if(numero_magique == 3)
+      (*hor) *= 3;
+   
+//aleur maximum
+   fscanf((*fp), "%d", max);
+
+return 0;
+
+}// fin gestion de l en tete
+
 
 
 int load_pnm(PNM **image, char* filename) {

@@ -1,0 +1,23 @@
+
+   // verification dela correspondance des formats
+   strcpy(format, argv[2]);
+   strcpy(nom_fichier, argv[3]);
+   strcpy(nom_sortie, argv[4]);
+
+   for(i=0; nom_fichier[i]!='.'; i++){}//fin for(i)
+
+   for(j=0; nom_sortie[j]!='.'; i++){}// fin for(j)
+
+   if(format[i] != nom_fichier[i+2]){
+      printf("le format encodé et l'extension du fichier d'entrée ne correspondent pas \n");
+      return -1;
+   }// fin if
+
+   if(format[i] != nom_sortie[j+2]){
+      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
+      return -1;
+   }// fin if
+
+   if(nom_fichier[i+2] != nom_sortie[j+2]){
+      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
+      return -1;
