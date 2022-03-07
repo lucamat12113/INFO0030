@@ -23,6 +23,8 @@
 typedef struct PNM_t PNM;
 
 
+int verif_arguments(char *format, char *nom_fichier, int argc, char **argv);
+
 /**
  * load_pnm
  *
