@@ -113,11 +113,11 @@ return 0;
 
 }// fin gestion de l en tete
 
-PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
+int alloc_memoire(PNM *image, int hor, int ver, int max, int numero_magique){
 
    
    int m;
-   PNM *image= malloc(sizeof(PNM));
+   image= malloc(sizeof(PNM));
    if(image == NULL)
       return -1;
    image->tab= malloc(hor*sizeof(int*));
@@ -135,7 +135,7 @@ PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
    }
    image->max= max;//max verstappen est champion du monde mai love ferrari
    image->ver= ver;
-   
+   return 0;
 
 
 }//fin allocation de la memoire
@@ -157,7 +157,7 @@ int load_pnm(PNM **image, char* filename) {
    
    gestion_en_tete(filename, &numero_magique, &max, &hor, &ver);
 
-   image = alloc_memoire(hor, ver, max, numero_magique);
+   image = alloc_memoire(image, hor, ver, max, numero_magique);
 
    for(o=0; o<ver; o++){
       for(p=0; p<hor; p++){
@@ -174,7 +174,7 @@ int load_pnm(PNM **image, char* filename) {
    }//fin for(o)
    fclose(fp);
    return 0;
-}
+}// fin load()
 
 int write_pnm(PNM *image, char* filename) {
 
@@ -206,8 +206,8 @@ int write_pnm(PNM *image, char* filename) {
 
    }
 
-
    fclose(fp);
    return 0;
-}
+}//fin write()
+
 

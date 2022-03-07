@@ -27,7 +27,9 @@ int verif_arguments(char **format, char **nom_fichier, char **nom_sortie, int ar
 
 int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, int *ver);
 
-PNM *alloc_memoire(int hor, int ver, int max, int numero_magique);
+int alloc_memoire(PNM *image, int hor, int ver, int max, int numero_magique);
+
+int je_cree_je_detruis(PNM *image);
 
 /**
  * load_pnm
