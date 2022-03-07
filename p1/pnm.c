@@ -94,6 +94,7 @@ int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, 
       return -1;
    }
  
+   printf("pute\n");
 
 //dimensions
    fscanf(fp, "%d %d", hor, ver);
@@ -102,12 +103,12 @@ int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, 
       (*hor) *= 3;
 
  
-
+   printf("pute\n");
 //valeur maximum
    fscanf(fp, "%d", max);
 
 
-   
+   printf("pute\n");
 return 0;
 
 }// fin gestion de l en tete
@@ -119,7 +120,7 @@ PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
    PNM *image= malloc(sizeof(PNM));
    if(image == NULL)
       return -1;
-   image->tab= malloc(hor*sizeof(int));
+   image->tab= malloc(hor*sizeof(int*));
    if(image->tab == NULL)
       return -1;
    for(m=0; m<hor; m++){
@@ -146,23 +147,31 @@ int load_pnm(PNM **image, char* filename) {
    int hor;
    int ver;
    int max;
+   FILE *fp;
 
    int o;
    int p;
+   char tmp2[100];
 
    
    gestion_en_tete(filename, &numero_magique, &max, &hor, &ver);
 
-   (*image) = alloc_memoire(hor, ver, max, numero_magique);
+   image = alloc_memoire(hor, ver, max, numero_magique);
 
    for(o=0; o<ver; o++){
       for(p=0; p<hor; p++){
-
+         fscanf(fp, "%s", tmp2);
+         if(tmp2[0]!='#'){
+            fscanf(fp, "%d", (*image)->tab[p][o]);
+         }else{            
+            fgets(tmp2, hor, fp);
+         }
 
 
       }//fin for(p)
 
    }//fin for(o)
+   fclose(fp);
    return 0;
 }
 
