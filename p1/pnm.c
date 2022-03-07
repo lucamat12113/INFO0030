@@ -89,12 +89,11 @@ int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, 
 //nombre magique
    fscanf(fp, "%s", tmp);
    if(tmp[0]=='p'){
-      *numero_magique = atoi(&tmp[1]);
+      numero_magique = atoi(tmp[1]);
    }else{
       return -1;
    }
- 
-   printf("pute\n");
+
 
 //dimensions
    fscanf(fp, "%d %d", hor, ver);
@@ -102,13 +101,12 @@ int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, 
    if(numero_magique == 3)
       (*hor) *= 3;
 
- 
-   printf("pute\n");
+
 //valeur maximum
    fscanf(fp, "%d", max);
 
 
-   printf("pute\n");
+   
 return 0;
 
 }// fin gestion de l en tete

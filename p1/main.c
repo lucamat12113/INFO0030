@@ -35,6 +35,10 @@ int main(int argc, char **argv) {
 	if(b!=0)
 		return -2;
 
+	int c= write_pnm(image, nom_fichier);
+	if(c!=0)
+		return -3;
+
 	return 0;
 }
 
