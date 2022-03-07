@@ -118,7 +118,7 @@ int load_pnm(PNM **image, char* filename) {
    int ver;
    int max;
    
-   int a= gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver, fp);
+   gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver, fp);
 
 
    return 0;
