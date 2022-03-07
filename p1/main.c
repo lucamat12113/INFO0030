@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 	PNM *image;
 
 
-	int a= verif_arguments(format, nom_fichier, nom_sortie, argc, argv);
+	int a= verif_arguments(&format, &nom_fichier, &nom_sortie, argc, argv);
 	if(a!=0)
 		return -1;
 	

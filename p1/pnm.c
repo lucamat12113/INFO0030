@@ -79,10 +79,10 @@ return 0;
 int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
 
    char *tmp;
-   FILE **fp;
+   FILE *fp;
 
    fp= fopen(nom_fichier, "r");
-      if((*fp)== NULL)
+      if(fp== NULL)
          return -1;
 
 //nombre magique
@@ -135,7 +135,7 @@ PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
 
 int load_pnm(PNM **image, char* filename) {
 
-   FILE *fp;
+   
    char lettre_magique;
    int numero_magique;
    int hor;
