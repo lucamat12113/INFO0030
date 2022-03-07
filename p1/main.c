@@ -23,10 +23,11 @@ int main(int argc, char **argv) {
 
 	char *format;
 	char *nom_fichier;
+	char *nom_sortie;
 	PNM *image;
 
 
-	int a= verif_arguments(format, nom_fichier, argc, argv);
+	int a= verif_arguments(format, nom_fichier, nom_sortie, argc, argv);
 	if(a!=0)
 		return -1;
 	

@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <unistd.h>
+#include <getopt.h>
 
 #include "pnm.h"
 
@@ -32,13 +33,11 @@ struct PNM_t {
 };
 
 
-int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
+int verif_arguments(char *format, char *nom_fichier, char *nom_sortie, int argc, char **argv){
    char *optstring = ":f:i:o:";
 
    	int val;
-   	char *format;
-   	char *nom_fichier;
-      char *nom_sortie;
+      
       int i;
       int j;
 
@@ -99,7 +98,7 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
 
    
    
-//aleur maximum
+//valeur maximum
    fscanf(fp, "%d", max);
 
 
