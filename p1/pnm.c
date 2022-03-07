@@ -33,7 +33,7 @@ struct PNM_t {
 };
 
 
-int verif_arguments(char *format, char *nom_fichier, char *nom_sortie, int argc, char **argv){
+int verif_arguments(char **format, char **nom_fichier, char **nom_sortie, int argc, char **argv){
    char *optstring = ":f:i:o:";
 
    	int val;
@@ -45,19 +45,19 @@ int verif_arguments(char *format, char *nom_fichier, char *nom_sortie, int argc,
    		switch(val){
    			case 'f':
                if(optarg!= NULL){
-                  format = optarg;
+                  *format = optarg;
    				   printf("Le format est %s\n",optarg);
                }
    				break;
    			case 'i':
                if(optarg!= NULL){
-                  nom_fichier = optarg;
+                  *nom_fichier = optarg;
    				   printf("input %s\n", optarg);
                }
    				break;
    			case 'o':
                if(optarg!= NULL){
-                  nom_sortie = optarg;
+                  *nom_sortie = optarg;
    				   printf("output %s\n", optarg);
                }
    				break;
@@ -76,12 +76,11 @@ return 0;
 
 
 
-int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
+int gestion_en_tete(char *nom_fichier, int *numero_magique, int *max, int *hor, int *ver){
 
-   char *tmp;
+   char tmp[100];
    FILE *fp;
 
-   printf("%s\n", nom_fichier);
 
    fp= fopen(nom_fichier, "r");
       if(fp== NULL)
@@ -89,10 +88,12 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
 
 //nombre magique
    fscanf(fp, "%s", tmp);
-   *lettre_magique =tmp[0];
-   *numero_magique = atoi(&tmp[1]);
-
-   printf("pute\n");
+   if(tmp[0]=='p'){
+      *numero_magique = atoi(&tmp[1]);
+   }else{
+      return -1;
+   }
+ 
 
 //dimensions
    fscanf(fp, "%d %d", hor, ver);
@@ -100,13 +101,13 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
    if(numero_magique == 3)
       (*hor) *= 3;
 
-   printf("pute\n");   
+ 
 
 //valeur maximum
    fscanf(fp, "%d", max);
 
 
-   printf("%s %ls %ls %ls %ls\n",lettre_magique, numero_magique, hor, ver, max);
+   
 return 0;
 
 }// fin gestion de l en tete
@@ -145,12 +146,23 @@ int load_pnm(PNM **image, char* filename) {
    int hor;
    int ver;
    int max;
+
+   int o;
+   int p;
+
    
-   gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver);
+   gestion_en_tete(filename, &numero_magique, &max, &hor, &ver);
+
+   (*image) = alloc_memoire(hor, ver, max, numero_magique);
+
+   for(o=0; o<ver; o++){
+      for(p=0; p<hor; p++){
 
 
 
+      }//fin for(p)
 
+   }//fin for(o)
    return 0;
 }
 
