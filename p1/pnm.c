@@ -77,21 +77,22 @@ return 0;
 
 
 
-int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver, FILE **fp){
+int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
 
    char *tmp;
+   FILE **fp;
 
-   (*fp)= fopen(nom_fichier, "r");
+   fp= fopen(nom_fichier, "r");
       if((*fp)== NULL)
          return -1;
 
 //nombre magique
-   fscanf((*fp), "%s", tmp);
+   fscanf(fp, "%s", tmp);
    *lettre_magique =tmp[0];
    *numero_magique = atoi(&tmp[1]);
 
 //dimensions
-   fscanf((*fp), "%d %d", hor, ver);
+   fscanf(fp, "%d %d", hor, ver);
 
    if(numero_magique == 3)
       (*hor) *= 3;
@@ -99,7 +100,7 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
    
    
 //aleur maximum
-   fscanf((*fp), "%d", max);
+   fscanf(fp, "%d", max);
 
 
    printf("%s %d %d %d %d\n",lettre_magique, numero_magique, hor, ver, max);
@@ -118,7 +119,7 @@ int load_pnm(PNM **image, char* filename) {
    int ver;
    int max;
    
-   gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver, fp);
+   gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver);
 
 
    return 0;
