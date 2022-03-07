@@ -19,31 +19,17 @@
 #include "pnm.h"
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
 
-    char *optstring = ":hi:o::";
+	char format[3];
+	char nom_fichier[25];
 
-	int val;
 
-	while((val=getopt(argc, argv, optstring))!=EOF){
-		switch(val){
-			case 'h':
-				printf("help\n");
-				break;
-			case 'i':
-				printf("input %s\n", optarg);
-				break;
-			case 'o':
-				printf("output %s\n", optarg);
-				break;
-			case ':':
-				printf("Missing arguments for %c\n", optopt);
-				break;
-			case '?':
-				printf("Unknown option: %c!\n", optopt);
-				break;
-		}//fin switch
-	}//fin while
+	int a= verif_arguments(format, nom_fichier, argc, argv);
+	if(a!=0){
+		return -1;
+	
+
 
 	return 0;
 }
