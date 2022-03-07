@@ -4,8 +4,8 @@
  * Ce fichier contient les définitions de types et 
  * les fonctions de manipulation d'images PNM.
  * 
- * @author: Nom Prenom Matricule
- * @date: 
+ * @author: Matagne Luca s190632
+ * @date: 07-03-2022
  * @projet: INFO0030 Projet 1
  */
 
@@ -77,11 +77,11 @@ return 0;
 
 
 
-int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
+int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver, FILE **fp){
 
    char *tmp;
 
-   FILE **fp= fopen(nom_fichier, "r");
+   (*fp)= fopen(nom_fichier, "r");
       if((*fp)== NULL)
          return -1;
 
@@ -95,10 +95,14 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
 
    if(numero_magique == 3)
       (*hor) *= 3;
+
+   
    
 //aleur maximum
    fscanf((*fp), "%d", max);
 
+
+   printf("%s %d %d %d %d\n",lettre_magique, numero_magique, hor, ver, max);
 return 0;
 
 }// fin gestion de l en tete
@@ -107,6 +111,14 @@ return 0;
 
 int load_pnm(PNM **image, char* filename) {
 
+   FILE *fp;
+   char lettre_magique;
+   int numero_magique;
+   int hor;
+   int ver;
+   int max;
+   
+   int a= gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver, fp);
 
 
    return 0;

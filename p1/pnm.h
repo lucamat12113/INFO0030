@@ -4,8 +4,8 @@
  * Ce fichier contient les déclarations de types et les prototypes
  * des fonctions pour la manipulation d'images PNM.
  * 
- * @author: Nom Prenom Matricule
- * @date: 
+ * @author: Matagne Luca s190632
+ * @date: 07-03-2022
  * @projet: INFO0030 Projet 1
  */
 
@@ -24,6 +24,8 @@ typedef struct PNM_t PNM;
 
 
 int verif_arguments(char *format, char *nom_fichier, int argc, char **argv);
+
+int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver, FILE **fp){
 
 /**
  * load_pnm
