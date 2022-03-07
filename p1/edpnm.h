@@ -1,18 +1,3 @@
-/**
- * pnm.h
- * 
- * Ce fichier contient les déclarations de types et les prototypes
- * des fonctions pour la manipulation d'images PNM.
- * 
- * @author: Nom Prenom Matricule
- * @date: 
- * @projet: INFO0030 Projet 1
- */
-
-/*
- * Include guard (pour éviter les problèmes d'inclusions multiplies
- * Bonne pratique: toujours encadrer un header avec un include guard
- */
 #ifndef __PNM__
 #define __PNM__
 
@@ -21,6 +6,10 @@
  *
  */
 typedef struct PNM_t PNM;
+
+int lecturedimensions(char *lettre, int *numero,int *largeur, int *longueur, int *max, char *nomfichier, FILE **fp);
+
+PNM *allocation_struct(int largeur, int longueur, int max, int numero);
 
 
 /**
@@ -42,6 +31,7 @@ typedef struct PNM_t PNM;
  *    -3 Contenu du fichier malformé
  *
  */
+
 int load_pnm(PNM **image, char* filename);
 
 /**
@@ -62,6 +52,10 @@ int load_pnm(PNM **image, char* filename);
  *
  */
 int write_pnm(PNM *image, char* filename);
+
+int freestruct(PNM *image);
+
+int test_caract(char *filename);
 
 #endif // __PNM__
 
