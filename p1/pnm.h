@@ -25,7 +25,9 @@ typedef struct PNM_t PNM;
 
 int verif_arguments(char *format, char *nom_fichier, int argc, char **argv);
 
-int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver){
+int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique, int *max, int *hor, int *ver);
+
+PNM *alloc_memoire(int hor, int ver, int max, int numero_magique);
 
 /**
  * load_pnm

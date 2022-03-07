@@ -108,7 +108,31 @@ return 0;
 
 }// fin gestion de l en tete
 
+PNM *alloc_memoire(int hor, int ver, int max, int numero_magique){
 
+   
+   int m;
+   PNM *image= malloc(sizeof(PNM));
+   if(image == NULL)
+      return -1;
+   image->tab= malloc(hor*sizeof(int));
+   if(image->tab == NULL)
+      return -1;
+   for(m=0; m<hor; m++){
+      image->tab[m]=malloc(ver*sizeof(int));
+   }
+
+   image->type= numero_magique;
+   if(numero_magique == 3){
+      image->hor= (hor/3);
+   }else{   
+      image->hor= hor;
+   }
+   image->ver= ver;
+   image->max= max;
+
+
+}//fin allocation de la memoire
 
 int load_pnm(PNM **image, char* filename) {
 
@@ -121,13 +145,7 @@ int load_pnm(PNM **image, char* filename) {
    
    gestion_en_tete(filename, &lettre_magique, &numero_magique, &max, &hor, &ver);
 
-   //allocation mémoire
-   int m;
-   PNM *image= malloc(sizeof(PNM));
-   image->tab= malloc(hor*sizeof(int));
-   for(m=0; m<hor; m++){
-      image->tab[m]=malloc(ver*sizeof(int));
-   }
+
 
 
    return 0;
