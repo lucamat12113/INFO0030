@@ -103,7 +103,7 @@ int gestion_en_tete(char *nom_fichier, char *lettre_magique, int *numero_magique
    fscanf(fp, "%d", max);
 
 
-   printf("%s %d %d %d %d\n",lettre_magique, numero_magique, hor, ver, max);
+   printf("%s %ls %ls %ls %ls\n",lettre_magique, numero_magique, hor, ver, max);
 return 0;
 
 }// fin gestion de l en tete
