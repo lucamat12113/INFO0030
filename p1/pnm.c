@@ -38,18 +38,29 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    	int val;
    	char *format;
    	char *nom_fichier;
+      char *nom_sortie;
       int i;
+      int j;
 
    	while((val=getopt(argc, argv, optstring))!=EOF){
    		switch(val){
    			case 'f':
-   				printf("Le format est %s\n",optarg);
+               if(optarg!= NULL){
+                  *nom_fichier = optarg;
+   				   printf("Le format est %s\n",optarg);
+               }
    				break;
    			case 'i':
-   				printf("input %s\n", optarg);
+               if(optarg!= NULL){
+                  *nom_fichier = optarg;
+   				   printf("input %s\n", optarg);
+               }
    				break;
    			case 'o':
-   				printf("output %s\n", optarg);
+               if(optarg!= NULL){
+                  *nom_fichier = optarg;
+   				   printf("output %s\n", optarg);
+               }
    				break;
    			case ':':
    				printf("Missing arguments for %c\n", optopt);
@@ -61,16 +72,27 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    	}//fin while
 
    // verification dela correspondance des formats
-   format = argv[2];
-   nom_fichier = argv[3];
+   strcpy(format, argv[2]);
+   strcpy(nom_fichier, argv[3]);
+   strcpy(nom_sortie, argv[4]);
 
-   for(i=0; nom_fichier[i]!='.'; i++){
-   }//fin for(i)
+   for(i=0; nom_fichier[i]!='.'; i++){}//fin for(i)
+
+   for(j=0; nom_sortie[j]!='.'; i++){}// fin for(j)
 
    if(format[i] != nom_fichier[i+2]){
-      printf("le format encodé et l'extension du fichier ne correspondent pas \n");
+      printf("le format encodé et l'extension du fichier d'entrée ne correspondent pas \n");
       return -1;
    }// fin if
+
+   if(format[i] != nom_sortie[j+2]){
+      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
+      return -1;
+   }// fin if
+
+   if(nom_fichier[i+2] != nom_sortie[j+2]){
+      printf("le format encodé et l'extension du fichier de sortie ne correspondent pas \n");
+      return -1;
 
 return 0;
 }// fin verification des arguments
