@@ -67,7 +67,7 @@ int verif_arguments(char *format, char *nom_fichier, int argc, char **argv){
    for(i=0; nom_fichier[i]!='.'; i++){
    }//fin for(i)
 
-   if(format[1] != nom_fichier[i+2]){
+   if(format[i] != nom_fichier[i+2]){
       printf("le format encodé et l'extension du fichier ne correspondent pas \n");
       return -1;
    }// fin if
